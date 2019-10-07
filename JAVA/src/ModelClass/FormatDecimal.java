@@ -6,20 +6,20 @@ import javax.swing.JOptionPane;
 
 public class FormatDecimal {
     
-    DecimalFormat formateador = new DecimalFormat("###,###,###.00");
-    Number numero;
+    DecimalFormat formater = new DecimalFormat("###,###,###.00");
+    Number number;
     
     public String decimal(double formato){
-        return formateador.format(formato);
+        return formater.format(formato);
     }
     
-    public double reconstruir(String formato){
+    public double rebuild(String formato){
         try {
-            numero = formateador.parse(formato);
+            number = formater.parse(formato);
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex);
         }
         
-        return numero.doubleValue();
+        return number.doubleValue();
     }
 }

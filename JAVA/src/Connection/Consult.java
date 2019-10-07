@@ -1,7 +1,7 @@
 package Connection;
 
-import Models.Clientes;
-import Models.RegistrosClientes;
+import Models.Customers;
+import Models.CustomersRecords;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -9,19 +9,19 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
 
-public class Consult extends Conexion {
+public class Consult extends Connexion {
     
     private QueryRunner QR = new QueryRunner();
-    private List<Clientes> cliente;
-    private List<RegistrosClientes> registrosClientes;
+    private List<Customers> customer;
+    private List<CustomersRecords> customersRecords;
     
-    public List<Clientes> clientes(){
+    public List<Customers> customers(){
         try {
-            cliente = (List<Clientes>) QR.query(getConn(), "SELECT * FROM clientes", new BeanListHandler(Clientes.class));
+            customer = (List<Customers>) QR.query(getConn(), "SELECT * FROM clientes", new BeanListHandler(Customers.class));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex);
         }
-        return cliente;
+        return customer;
     }
     
     public void insert(String query, Object[] data){
@@ -51,16 +51,16 @@ public class Consult extends Conexion {
         }
     }
     
-    public List<RegistrosClientes> registrosClientes(int idCliente){
-        String condicion = " c.id_cliente = rc.id_cliente ";
-        String campos = " c.id_cliente, c.id, c.nombre, c.apellido,"
+    public List<CustomersRecords> customersRecords(int idCliente){
+        String condition = " c.id_cliente = rc.id_cliente ";
+        String fields = " c.id_cliente, c.id, c.nombre, c.apellido,"
                 + " rc.id_registro, rc.saldo_actual, rc.fecha_actual, rc.ultimo_pago, rc.fecha_pago ";
         
         try {
-            registrosClientes = (List<RegistrosClientes>) QR.query(getConn(), "SELECT " + campos + " FROM reportes_clientes rc INNER JOIN clientes c ON " + condicion + " WHERE rc.id_cliente = " + idCliente, new BeanListHandler(RegistrosClientes.class));
+            customersRecords = (List<CustomersRecords>) QR.query(getConn(), "SELECT " + fields + " FROM reportes_clientes rc INNER JOIN clientes c ON " + condition + " WHERE rc.id_cliente = " + idCliente, new BeanListHandler(CustomersRecords.class));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex);
         }
-        return registrosClientes;
+        return customersRecords;
     }
 }
