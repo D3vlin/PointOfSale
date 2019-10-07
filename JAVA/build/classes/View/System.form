@@ -1289,7 +1289,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtIdCustomer">
                   <Events>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIdCustomerKeyReleased"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIdCustomerKeyTyped"/>
                   </Events>
                 </Component>
@@ -1304,7 +1303,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCustomerName">
                   <Events>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerNameKeyReleased"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerNameKeyTyped"/>
                   </Events>
                 </Component>
@@ -1318,7 +1316,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCustomerSurname">
                   <Events>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerSurnameKeyReleased"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerSurnameKeyTyped"/>
                   </Events>
                 </Component>
@@ -1332,9 +1329,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCustomerDirection">
-                  <Events>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerDirectionKeyReleased"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCustomerTelephone">
                   <Properties>
@@ -1346,7 +1340,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCustomerTelephone">
                   <Events>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerTelephoneKeyReleased"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerTelephoneKeyTyped"/>
                   </Events>
                 </Component>
@@ -1363,7 +1356,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCustomerPayment">
                   <Events>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerPaymentKeyReleased"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomerPaymentKeyTyped"/>
                   </Events>
                 </Component>

@@ -15,6 +15,9 @@ import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 //</editor-fold>
 
@@ -65,6 +68,13 @@ public class System extends javax.swing.JFrame {
         month = Integer.toString(c.get(Calendar.MONTH));
         year = Integer.toString(c.get(Calendar.YEAR));
         date = day + "/" + month + "/" + year;
+        
+        setJTextFieldChanged(txtIdCustomer);
+        setJTextFieldChanged(txtCustomerName);
+        setJTextFieldChanged(txtCustomerSurname);
+        setJTextFieldChanged(txtCustomerDirection);
+        setJTextFieldChanged(txtCustomerTelephone);
+        setJTextFieldChanged(txtCustomerPayment);
     }
     
     //<editor-fold defaultstate="collapsed" desc="PROCEDURES">
@@ -1004,9 +1014,6 @@ public class System extends javax.swing.JFrame {
         lblIdCustomer.setToolTipText("");
 
         txtIdCustomer.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtIdCustomerKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtIdCustomerKeyTyped(evt);
             }
@@ -1017,9 +1024,6 @@ public class System extends javax.swing.JFrame {
         lblCustomerName1.setToolTipText("");
 
         txtCustomerName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCustomerNameKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCustomerNameKeyTyped(evt);
             }
@@ -1029,9 +1033,6 @@ public class System extends javax.swing.JFrame {
         lblCustomerSurname1.setText("Apellido");
 
         txtCustomerSurname.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCustomerSurnameKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCustomerSurnameKeyTyped(evt);
             }
@@ -1041,19 +1042,10 @@ public class System extends javax.swing.JFrame {
         lblCustomerDirection.setText("Dirección");
         lblCustomerDirection.setToolTipText("");
 
-        txtCustomerDirection.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCustomerDirectionKeyReleased(evt);
-            }
-        });
-
         lblCustomerTelephone.setForeground(new java.awt.Color(102, 102, 102));
         lblCustomerTelephone.setText("Telefono");
 
         txtCustomerTelephone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCustomerTelephoneKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCustomerTelephoneKeyTyped(evt);
             }
@@ -1064,9 +1056,6 @@ public class System extends javax.swing.JFrame {
         lblCustomerPayment.setText("Pagos de deudas");
 
         txtCustomerPayment.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCustomerPaymentKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCustomerPaymentKeyTyped(evt);
             }
@@ -2823,88 +2812,21 @@ public class System extends javax.swing.JFrame {
         loadCustomersData();
     }//GEN-LAST:event_btnCustomersActionPerformed
 
-    private void txtIdCustomerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdCustomerKeyReleased
-        if (txtIdCustomer.getText().equals("")) {
-            lblIdCustomer.setForeground(fieldEmpty);
-        } else {
-            lblIdCustomer.setText("ID");
-            lblIdCustomer.setForeground(fieldOk);
-        }
-    }//GEN-LAST:event_txtIdCustomerKeyReleased
-
     private void txtIdCustomerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdCustomerKeyTyped
         event.numberKeyPress(evt);
     }//GEN-LAST:event_txtIdCustomerKeyTyped
-
-    private void txtCustomerNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerNameKeyReleased
-        if (txtCustomerName.getText().equals("")) {
-            lblCustomerName1.setForeground(fieldEmpty);
-        } else {
-            lblCustomerName1.setText("Nombre completo");
-            lblCustomerName1.setForeground(fieldOk);
-        }
-    }//GEN-LAST:event_txtCustomerNameKeyReleased
 
     private void txtCustomerNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerNameKeyTyped
         event.textKeyPress(evt);
     }//GEN-LAST:event_txtCustomerNameKeyTyped
 
-    private void txtCustomerSurnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerSurnameKeyReleased
-        if (txtCustomerSurname.getText().equals("")) {
-            lblCustomerSurname1.setForeground(fieldEmpty);
-        } else {
-            lblCustomerSurname1.setText("Apellido");
-            lblCustomerSurname1.setForeground(fieldOk);
-        }
-    }//GEN-LAST:event_txtCustomerSurnameKeyReleased
-
     private void txtCustomerSurnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerSurnameKeyTyped
         event.textKeyPress(evt);
     }//GEN-LAST:event_txtCustomerSurnameKeyTyped
 
-    private void txtCustomerDirectionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerDirectionKeyReleased
-        if (txtCustomerDirection.getText().equals("")) {
-            lblCustomerDirection.setForeground(fieldEmpty);
-        } else {
-            lblCustomerDirection.setText("Dirección");
-            lblCustomerDirection.setForeground(fieldOk);
-        }
-    }//GEN-LAST:event_txtCustomerDirectionKeyReleased
-
-    private void txtCustomerTelephoneKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerTelephoneKeyReleased
-        if (txtCustomerTelephone.getText().equals("")) {
-            lblCustomerTelephone.setForeground(fieldEmpty);
-        } else {
-            lblCustomerTelephone.setText("Telefono");
-            lblCustomerTelephone.setForeground(fieldOk);
-        }
-    }//GEN-LAST:event_txtCustomerTelephoneKeyReleased
-
     private void txtCustomerTelephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerTelephoneKeyTyped
         event.numberKeyPress(evt);
     }//GEN-LAST:event_txtCustomerTelephoneKeyTyped
-
-    private void txtCustomerPaymentKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerPaymentKeyReleased
-        if (tblReports.getRowCount() == 0) {
-            lblCustomerPayment.setText("Seleccione el cliente");
-            lblCustomerPayment.setForeground(fieldWrong);
-        } else {
-            if (!txtCustomerPayment.getText().equals("")) {
-                lblCustomerPayment.setText("Pagos de deudas");
-                lblCustomerPayment.setForeground(fieldOk);
-                String deuda1 = (String) customerReportsModelTable.getValueAt(0, 3);
-                double deuda2, deuda3, deudaTotal;
-                pattern = Pattern.compile("[$]");
-                matcher = pattern.matcher(deuda1);
-                deuda1 = matcher.replaceAll("");
-                deuda2 = format.rebuild(deuda1);
-                deuda3 = Double.parseDouble(txtCustomerPayment.getText());
-                payment = format.decimal(deuda3);
-                deudaTotal = deuda2 - deuda3;
-                currentDebt = format.decimal(deudaTotal);
-            }
-        }
-    }//GEN-LAST:event_txtCustomerPaymentKeyReleased
 
     private void txtCustomerPaymentKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerPaymentKeyTyped
         event.numberDecimalKeyPress(evt, txtCustomerPayment);
@@ -3073,29 +2995,12 @@ public class System extends javax.swing.JFrame {
                 
         jrbEnterCustomer.setSelected(true);
         
-        txtIdCustomer.setText("");
-        lblIdCustomer.setForeground(fieldEmpty);
-        lblIdCustomer.setText("ID");
-        
+        txtIdCustomer.setText("");        
         txtCustomerName.setText("");
-        lblCustomerName1.setForeground(fieldEmpty);
-        lblCustomerName1.setText("Nombre completo");
-        
         txtCustomerSurname.setText("");
-        lblCustomerSurname1.setForeground(fieldEmpty);
-        lblCustomerSurname1.setText("Apellido");
-        
         txtCustomerDirection.setText("");
-        lblCustomerDirection.setForeground(fieldEmpty);
-        lblCustomerDirection.setText("Dirección");
-        
         txtCustomerTelephone.setText("");
-        lblCustomerTelephone.setForeground(fieldEmpty);
-        lblCustomerTelephone.setText("Telefono");
-        
         txtCustomerPayment.setText("");
-        lblCustomerPayment.setForeground(fieldEmpty);
-        lblCustomerPayment.setText("Pagos de deudas");
         
         lblCustomerName2.setText("Nombre");
         lblCustomerSurname2.setText("Apellido");
@@ -3190,7 +3095,142 @@ public class System extends javax.swing.JFrame {
             }
         });
     }
+    
+    //<editor-fold defaultstate="collapsed" desc="TEXT FIELD CHANGE">
+    private void setJTextFieldChanged(JTextField txt){
+        DocumentListener documentListener = new DocumentListener(){
 
+            @Override
+            public void insertUpdate(DocumentEvent documentEvent) {
+                printIt(txt, documentEvent);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent documentEvent) {
+                printIt(txt, documentEvent);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent documentEvent) {
+                printIt(txt, documentEvent);
+            }            
+        };
+        txt.getDocument().addDocumentListener(documentListener);
+    }
+        
+    private void printIt(JTextField txt, DocumentEvent documentEvent) {
+        DocumentEvent.EventType type = documentEvent.getType();
+
+        if (type.equals(DocumentEvent.EventType.CHANGE))
+        {
+            TextFieldChanged(txt);
+        }
+        else if (type.equals(DocumentEvent.EventType.INSERT))
+        {
+            TextFieldChanged(txt);
+        }
+        else if (type.equals(DocumentEvent.EventType.REMOVE))
+        {
+            TextFieldChanged(txt);
+        }
+    }
+    
+    private void TextFieldChanged(JTextField txt){
+        if (customers == (JPanel) tpnMenu.getComponentAt(0)){
+            if (txt == txtIdCustomer){
+                txtIdCustomerChanged();
+            }
+            else if (txt == txtCustomerName){
+                txtCustomerNameChanged();
+            }
+            else if (txt == txtCustomerSurname){
+                txtCustomerSurnameChanged();
+            }
+            else if (txt == txtCustomerDirection){
+                txtCustomerDirectionChanged();
+            }
+            else if (txt == txtCustomerTelephone){
+                txtCustomerTelephoneChanged();
+            }
+            else if (txt == txtCustomerPayment){
+                txtCustomerPaymentChanged();
+            }
+        }         
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="CUSTOMERS TAB">
+    private void txtIdCustomerChanged(){
+        if (txtIdCustomer.getText().equals("")) {
+            lblIdCustomer.setForeground(fieldEmpty);
+        } else {
+            lblIdCustomer.setText("ID");
+            lblIdCustomer.setForeground(fieldOk);
+        }
+    }
+    
+    private void txtCustomerNameChanged(){
+        if (txtCustomerName.getText().equals("")) {
+            lblCustomerName1.setForeground(fieldEmpty);
+        } else {
+            lblCustomerName1.setText("Nombre completo");
+            lblCustomerName1.setForeground(fieldOk);
+        }
+    }
+    
+    private void txtCustomerSurnameChanged(){
+        if (txtCustomerSurname.getText().equals("")) {
+            lblCustomerSurname1.setForeground(fieldEmpty);
+        } else {
+            lblCustomerSurname1.setText("Apellido");
+            lblCustomerSurname1.setForeground(fieldOk);
+        }
+    }
+    
+    private void txtCustomerDirectionChanged(){
+        if (txtCustomerDirection.getText().equals("")) {
+            lblCustomerDirection.setForeground(fieldEmpty);
+        } else {
+            lblCustomerDirection.setText("Dirección");
+            lblCustomerDirection.setForeground(fieldOk);
+        }
+    }
+    
+    private void txtCustomerTelephoneChanged(){
+        if (txtCustomerTelephone.getText().equals("")) {
+            lblCustomerTelephone.setForeground(fieldEmpty);
+        } else {
+            lblCustomerTelephone.setText("Telefono");
+            lblCustomerTelephone.setForeground(fieldOk);
+        }
+    }
+    
+    // TODO: Plantear bien este metodo
+    private void txtCustomerPaymentChanged(){ 
+        if (tblReports.getRowCount() == 0 || txtIdCustomer.getText().equals("")) {
+            lblCustomerPayment.setText("Seleccione el cliente");
+            lblCustomerPayment.setForeground(fieldWrong);
+        } else {
+            if (!txtCustomerPayment.getText().equals("")) {
+                String deuda1 = (String) customerReportsModelTable.getValueAt(0, 3);
+                pattern = Pattern.compile("[$]");
+                matcher = pattern.matcher(deuda1);
+                deuda1 = matcher.replaceAll("");
+                
+                double deuda2, deuda3, deudaTotal;
+                deuda2 = format.rebuild(deuda1);
+                deuda3 = Double.parseDouble(txtCustomerPayment.getText());
+                payment = format.decimal(deuda3);
+                deudaTotal = deuda2 - deuda3;
+                currentDebt = format.decimal(deudaTotal);
+                
+                lblCustomerPayment.setText("Pagos de deudas");
+                lblCustomerPayment.setForeground(fieldOk);
+            }
+        }
+    }
+    //</editor-fold>
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="CONTROLS">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_AnteriorCLT2;
